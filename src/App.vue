@@ -24,6 +24,7 @@
       show-if-above
       bordered
       content-class="bg-grey-2"
+      class=" q-pa-sm"
     >
       <q-list>
         <q-item-label header>Essential Links</q-item-label>
