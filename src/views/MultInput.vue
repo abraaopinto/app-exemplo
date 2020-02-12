@@ -164,8 +164,11 @@ export default {
     validarCNPJ (pCnpj) {
       pCnpj = pCnpj.replace(/[^\d]+/g, '').padStart(14, '0')
 
+      if (pCnpj === '') return false
+
+      if (pCnpj.length !== 14) return false
       // Elimina CNPJs invalidos conhecidos
-      if (pCnpj.length !== 14 ||
+      if (
         pCnpj === '00000000000000' ||
         pCnpj === '11111111111111' ||
         pCnpj === '22222222222222' ||
@@ -175,32 +178,31 @@ export default {
         pCnpj === '66666666666666' ||
         pCnpj === '77777777777777' ||
         pCnpj === '88888888888888' ||
-        pCnpj === '99999999999999') return false
-
+        pCnpj === '99999999999999'
+      )
+        return false
       // Valida DVs
-      var tamanho = pCnpj.length - 2
-      var numeros = pCnpj.substring(0, tamanho)
-      var digitos = pCnpj.substring(tamanho)
-      var soma = 0
-      var pos = tamanho - 7
-      for (var i = tamanho; i >= 1; i--) {
+      let tamanho = pCnpj.length - 2
+      let numeros = pCnpj.substring(0, tamanho)
+      let digitos = pCnpj.substring(tamanho)
+      let soma = 0
+      let pos = tamanho - 7
+      for (let i = tamanho; i >= 1; i--) {
         soma += numeros.charAt(tamanho - i) * pos--
         if (pos < 2) pos = 9
       }
-      var resultado = soma % 11 < 2 ? 0 : 11 - soma % 11
-      if (resultado !== digitos.charAt(0)) return false
+      let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11)
+      if (resultado != digitos.charAt(0)) return false
       tamanho = tamanho + 1
       numeros = pCnpj.substring(0, tamanho)
       soma = 0
       pos = tamanho - 7
-
-      for (var j = tamanho; j >= 1; j--) {
-        soma += numeros.charAt(tamanho - j) * pos--
+      for (let i = tamanho; i >= 1; i--) {
+        soma += numeros.charAt(tamanho - i) * pos--
         if (pos < 2) pos = 9
       }
-      resultado = soma % 11 < 2 ? 0 : 11 - soma % 11
-
-      if (resultado !== digitos.charAt(1)) return false
+      resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11)
+      if (resultado != digitos.charAt(1)) return false
       return true
     }
   }
