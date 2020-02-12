@@ -93,6 +93,7 @@ export default {
         // Verifica se é um CPF
         if (this.validarCPF(this.value)) {
           this.cpf = this.value
+          console.log('passou aqui cpf')
           this.limiteMaximoCampo = 14
         } else {
           this.cpf = ''
@@ -102,6 +103,7 @@ export default {
         if (this.validarCNPJ(this.value)) {
           this.limiteMaximoCampo = 18
           this.cnpj = this.value
+          console.log('passou aqui cnpj')
         } else {
           this.cnpj = ''
         }
