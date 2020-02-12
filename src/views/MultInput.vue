@@ -38,7 +38,7 @@
           >
             <p v-if=" cpf !== ''"> CPF: {{ cpf }}</p>
             <p v-if=" cnpj !== ''"> CNPJ: {{ cnpj }}</p>
-            <p v-if=" nomeRazaoSocial !== ''"> Nome ou Razão Social: {{ nomeRazaoSocial }}</p>
+            <p v-if=" nomeOuRazaoSocial !== ''"> Nome ou Razão Social: {{ nomeOuRazaoSocial }}</p>
           </template>
 
         </q-input>
@@ -55,7 +55,7 @@ export default {
       cpf: '',
       cnpj: '',
       cnpjRaiz: '',
-      nomeRazaoSocial: '',
+      nomeOuRazaoSocial: '',
       pesquisarPorRaizCnpj: false,
       tipoPessoa: '',
       limiteMaximoCampo: 100
@@ -65,18 +65,18 @@ export default {
     validateInput () {
       const regexRegra1 = /[A-Zi]/i
 
-      // Regra 1 - somente nomeRazaoSocial recebe o valor de value pois o campo contem letras e numeros.
+      // Regra 1 - somente nomeOuRazaoSocial recebe o valor de value pois o campo contem letras e numeros.
       if (this.value.match(regexRegra1) !== null) {
         this.limiteMaximoCampo = 100
-        this.nomeRazaoSocial = this.value
+        this.nomeOuRazaoSocial = this.value
         this.idFiscal = ''
         this.cpf = ''
         this.cnpj = ''
         this.cnpjRaiz = ''
       } else {
         /*  Analise dos demais casos onde todos os digitos são numericos. */
-        // Reseta o valor de nomeRazaoSocial.
-        this.nomeRazaoSocial = ''
+        // Reseta o valor de nomeOuRazaoSocial.
+        this.nomeOuRazaoSocial = ''
         this.tipoPessoa = ''
 
         // Limita o tamanho do campo para o maior formato.
