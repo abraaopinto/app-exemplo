@@ -51,13 +51,9 @@ export default {
   data () {
     return {
       value: '',
-      idFiscal: '',
       cpf: '',
       cnpj: '',
-      cnpjRaiz: '',
       nomeOuRazaoSocial: '',
-      pesquisarPorRaizCnpj: false,
-      tipoPessoa: '',
       limiteMaximoCampo: 100
     }
   },
@@ -69,26 +65,16 @@ export default {
       if (this.value.match(regexRegra1) !== null) {
         this.limiteMaximoCampo = 100
         this.nomeOuRazaoSocial = this.value
-        this.idFiscal = ''
         this.cpf = ''
         this.cnpj = ''
-        this.cnpjRaiz = ''
       } else {
         /*  Analise dos demais casos onde todos os digitos são numericos. */
         // Reseta o valor de nomeOuRazaoSocial.
         this.nomeOuRazaoSocial = ''
-        this.tipoPessoa = ''
 
         // Limita o tamanho do campo para o maior formato.
         this.limiteMaximoCampo = 18
         // Realizar as validações para os demais variaveis.
-
-        // Verifica se é um IdFiscal
-        if (this.validarCPF(this.value) || this.validarCNPJ(this.value)) {
-          this.idFiscal = this.value
-        } else {
-          this.idFiscal = ''
-        }
 
         // Verifica se é um CPF
         if (this.validarCPF(this.value)) {
@@ -106,19 +92,6 @@ export default {
           console.log('passou aqui cnpj')
         } else {
           this.cnpj = ''
-        }
-
-        // Verifica se é uma Raiz do CNPJ.
-        if (this.value.length <= 8 && this.pesquisarPorRaizCnpj) this.cnpjRaiz = this.value
-
-        // Verifica se o usuario não deseja consultar pela Raiz do CNPJ.
-        if (!this.pesquisarPorRaizCnpj) this.cnpjRaiz = ''
-
-        // Verifica se o usuario digitou mais de 8 caracteres.
-
-        if (this.value.length > 8 && this.pesquisarPorRaizCnpj) {
-          this.cnpjRaiz = ''
-          this.pesquisarPorRaizCnpj = false
         }
       }
     },
@@ -138,10 +111,10 @@ export default {
         pCpf === '99999999999') return false
 
       // Valida 1o digito
-      var add = 0
-      var rev = 0
+      let add = 0
+      let rev = 0
 
-      for (var i = 0; i < 9; i++) add += parseInt(pCpf.charAt(i)) * (10 - i)
+      for (let i = 0; i < 9; i++) add += parseInt(pCpf.charAt(i)) * (10 - i)
 
       rev = 11 - (add % 11)
 
@@ -151,7 +124,7 @@ export default {
 
       // Valida 2o digito
       add = 0
-      for (var j = 0; j < 10; j++) add += parseInt(pCpf.charAt(j)) * (11 - j)
+      for (let j = 0; j < 10; j++) add += parseInt(pCpf.charAt(j)) * (11 - j)
 
       rev = 11 - (add % 11)
 
@@ -168,8 +141,7 @@ export default {
 
       if (pCnpj.length !== 14) return false
       // Elimina CNPJs invalidos conhecidos
-      if (
-        pCnpj === '00000000000000' ||
+      if (pCnpj === '00000000000000' ||
         pCnpj === '11111111111111' ||
         pCnpj === '22222222222222' ||
         pCnpj === '33333333333333' ||
@@ -179,8 +151,7 @@ export default {
         pCnpj === '77777777777777' ||
         pCnpj === '88888888888888' ||
         pCnpj === '99999999999999'
-      )
-        return false
+      ) { return false }
       // Valida DVs
       let tamanho = pCnpj.length - 2
       let numeros = pCnpj.substring(0, tamanho)
@@ -192,7 +163,7 @@ export default {
         if (pos < 2) pos = 9
       }
       let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11)
-      if (resultado != digitos.charAt(0)) return false
+      if (resultado !== digitos.charAt(0)) return false
       tamanho = tamanho + 1
       numeros = pCnpj.substring(0, tamanho)
       soma = 0
@@ -202,7 +173,7 @@ export default {
         if (pos < 2) pos = 9
       }
       resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11)
-      if (resultado != digitos.charAt(1)) return false
+      if (resultado !== digitos.charAt(1)) return false
       return true
     }
   }
