@@ -1,6 +1,10 @@
 <template>
-  <q-page>
-    <h1>Mult input</h1>
+  <q-page class="q-pa-sm">
+    <q-toolbar>
+      <q-toolbar-title>
+        MultInput
+      </q-toolbar-title>
+    </q-toolbar>
     <q-card>
       <q-card-section>
         <q-input
