@@ -104,11 +104,25 @@
     <q-page-container class=" q-pa-sm">
       <MultInput />
     </q-page-container>
+    <q-footer>
+      <q-toolbar>
+        <q-toolbar-title>
+          <q-chip color="blue-10" text-color="white" clickable
+          @click="openLink">
+          <q-avatar size="sm">
+            <img src="https://avatars2.githubusercontent.com/u/49882179?v=4">
+          </q-avatar>
+          Abraão Pinto
+          </q-chip>
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
   </q-layout>
 </template>
 
 <script>
 import MultInput from './views/MultInput'
+import { openURL } from 'quasar'
 
 export default {
   name: 'LayoutDefault',
@@ -116,7 +130,11 @@ export default {
   components: {
     MultInput
   },
-
+  methods: {
+    openLink () {
+      openURL('https://github.com/abraaopinto')
+    }
+  },
   data () {
     return {
       leftDrawerOpen: false
@@ -127,6 +145,9 @@ export default {
 
 <style lang="stylus" scoped>
 header {
+  background: linear-gradient(145deg, #027be3 11%, #014a88 75%);
+}
+footer {
   background: linear-gradient(145deg, #027be3 11%, #014a88 75%);
 }
 </style>
