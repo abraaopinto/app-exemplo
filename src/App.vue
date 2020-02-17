@@ -30,6 +30,42 @@
         <q-item-label header>Essential Links</q-item-label>
         <q-item
           clickable
+          to="/"
+        >
+          <q-item-section avatar>
+            <q-icon name="fas fa-home" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Home</q-item-label>
+            <q-item-label caption>Pagina inicial.</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item
+          clickable
+          to="MultInput"
+        >
+          <q-item-section avatar>
+            <q-icon name="far fa-address-card" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>MultInput</q-item-label>
+            <q-item-label caption>Componente para multiplas entradas de dados.</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item
+          clickable
+          to="about"
+        >
+          <q-item-section avatar>
+            <q-icon name="far fa-comment-dots" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Sobre</q-item-label>
+            <q-item-label caption>Pagina Sobre.</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item
+          clickable
           tag="a"
           target="_blank"
           href="https://quasar.dev"
@@ -101,8 +137,8 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container class=" q-pa-sm">
-      <MultInput />
+    <q-page-container class="q-pa-md">
+      <router-view></router-view>
     </q-page-container>
     <q-footer>
       <q-toolbar>
@@ -121,15 +157,12 @@
 </template>
 
 <script>
-import MultInput from './views/MultInput'
 import { openURL } from 'quasar'
 
 export default {
   name: 'LayoutDefault',
 
-  components: {
-    MultInput
-  },
+  components: {},
   methods: {
     openLink () {
       openURL('https://github.com/abraaopinto')
