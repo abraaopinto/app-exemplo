@@ -1,12 +1,17 @@
 <template>
-  <div class="q-pa-md">
+  <q-page>
+    <PageHeader title="home" />
     <p>Seja bem vido!</p>
-  </div>
+  </q-page>
 </template>
 
 <script>
+import PageHeader from '../components/PageHeader'
 
 export default {
-  name: 'home'
+  name: 'home',
+  components: {
+    PageHeader
+  }
 }
 </script>
