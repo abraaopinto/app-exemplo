@@ -1,5 +1,21 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <q-page>
+    <PageHeader title="Sobre" />
+    <p>
+      This is an about page {{ currentRoute }}
+    </p>
+  </q-page>
 </template>
+<script>
+import PageHeader from '../components/PageHeader'
+export default {
+  components: {
+    PageHeader
+  },
+  data () {
+    return {
+      currentRoute: window.location.pathname
+    }
+  }
+}
+</script>
