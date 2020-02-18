@@ -137,7 +137,7 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container class="q-pa-md">
+    <q-page-container >
       <router-view></router-view>
     </q-page-container>
     <q-footer>
@@ -180,7 +180,10 @@ export default {
 header {
   background: linear-gradient(145deg, #027be3 11%, #014a88 75%);
 }
+main.q-page {
+  padding: 16px 16px;
+}
 footer {
-  background: linear-gradient(145deg, #027be3 11%, #014a88 75%);
+  background: linear-gradient(145deg, #c7c7c7 11%, #666666 75%);
 }
 </style>
