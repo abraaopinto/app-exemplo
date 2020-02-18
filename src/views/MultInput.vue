@@ -1,10 +1,6 @@
 <template>
-  <q-page class="q-pa-sm">
-    <q-toolbar>
-      <q-toolbar-title>
-        MultInput
-      </q-toolbar-title>
-    </q-toolbar>
+  <q-page>
+    <PageHeader title="MultInput" />
     <q-card>
       <q-card-section>
         <q-input
@@ -51,7 +47,12 @@
   </q-page>
 </template>
 <script>
+import PageHeader from '../components/PageHeader'
+
 export default {
+  components: {
+    PageHeader
+  },
   data () {
     return {
       value: '',
