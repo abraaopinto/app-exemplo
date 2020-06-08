@@ -137,18 +137,22 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container >
+    <q-page-container>
       <router-view></router-view>
     </q-page-container>
     <q-footer>
       <q-toolbar>
         <q-toolbar-title>
-          <q-chip color="blue-10" text-color="white" clickable
-          @click="openLink">
-          <q-avatar size="sm">
-            <img src="https://avatars2.githubusercontent.com/u/49882179?v=4">
-          </q-avatar>
-          Abraão Pinto
+          <q-chip
+            color="grey-4"
+            text-color="grey-6"
+            clickable
+            @click="openLink"
+          >
+            <q-avatar size="sm">
+              <img src="https://avatars2.githubusercontent.com/u/49882179?v=4">
+            </q-avatar>
+            Abraão Pinto
           </q-chip>
         </q-toolbar-title>
       </q-toolbar>
@@ -180,10 +184,12 @@ export default {
 header {
   background: linear-gradient(145deg, #027be3 11%, #014a88 75%);
 }
+
 main.q-page {
   padding: 16px 16px;
 }
+
 footer {
-  background: linear-gradient(145deg, #c7c7c7 11%, #666666 75%);
+  background: #DDD !important;
 }
 </style>
