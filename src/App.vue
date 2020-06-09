@@ -182,7 +182,9 @@ export default {
 
 <style lang="stylus" scoped>
 header {
-  background: linear-gradient(145deg, #027be3 11%, #014a88 75%);
+  background: #56ab2f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #a8e063, #56ab2f); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 main.q-page {
