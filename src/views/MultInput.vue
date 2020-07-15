@@ -13,7 +13,7 @@
           minlength="3"
           minCaractersSearch="3"
           @search="pesquisar"
-          @clear="texto=''"
+          @clear="clearForm()"
         />
       </q-card-section>
     </q-card>
@@ -33,9 +33,30 @@ export default {
     }
   },
   methods: {
+    clearForm () {
+      this.texto = ''
+    },
     pesquisar: function (pessoa) {
-      let retorno = this.$utils.containsText(pessoa.nomeRazaoSocial) ? `Pesquisa por Nome ou Razão Social: ${pessoa.nomeRazaoSocial}` : `Pesquisa por Identificação Fiscal: ${pessoa.idFiscal}`
-      alert(retorno)
+      let mensagemRetorno = this.$utils.containsText(pessoa.nomeRazaoSocial) ? `Confirma realizar a pesquisa por Nome ou Razão Social: ${pessoa.nomeRazaoSocial}` : `Confirma realizar a pesquisa Identificação Fiscal: ${pessoa.idFiscal}`
+      this.$q.dialog({
+        title: 'Pesquisar',
+        message: mensagemRetorno,
+        ok: {
+          push: true
+        },
+        cancel: {
+          push: true,
+          color: 'negative'
+        },
+        persistent: true
+      }).onOk(() => {
+        console.log('OK')
+      }).onCancel(() => {
+        console.log('Cancel')
+      }).onDismiss(() => {
+        this.clearForm()
+        console.log('I am triggered on both OK and Cancel')
+      })
     }
   }
 }
