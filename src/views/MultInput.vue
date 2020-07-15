@@ -34,7 +34,8 @@ export default {
   },
   methods: {
     pesquisar: function (pessoa) {
-      alert(`${pessoa.nomeRazaoSocial} ${pessoa.idFiscal}`)
+      let retorno = this.$utils.containsText(pessoa.nomeRazaoSocial) ? `Pesquisa por Nome ou Razão Social: ${pessoa.nomeRazaoSocial}` : `Pesquisa por Identificação Fiscal: ${pessoa.idFiscal}`
+      alert(retorno)
     }
   }
 }
