@@ -28,7 +28,7 @@
         v-if="!isSearch && isValue"
         name="search"
         class="cursor-pointer"
-        @click="$emit('search', pessoa)"
+        @click="search()"
       />
     </template>
   </q-input>
@@ -78,6 +78,10 @@ export default {
     clear () {
       this.content = ''
       return this.$emit('clear')
+    },
+    search () {
+      this.content = ''
+      this.$emit('search', this.pessoa)
     },
     composeRules () {
       let rules = []
