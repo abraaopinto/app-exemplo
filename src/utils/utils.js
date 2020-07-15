@@ -6,7 +6,7 @@ const utils = {
     if (utils.isNumero(cpf)) cpf = cpf.toString()
     cpf = utils.sanitizeCpfCnpj(cpf)
     if (cpf === '') return false
-    // Elimina CPFs invalidos conhecidos
+    // Elimina os CPF inválidos conhecidos
     if (
       cpf.length !== 11 ||
         cpf === '00000000000' ||
@@ -22,13 +22,13 @@ const utils = {
     ) {
       return false
     }
-    // Valida 1o digito
+    // Valida primeiro digito
     let add = 0
     for (let i = 0; i < 9; i++) add += parseInt(cpf.charAt(i)) * (10 - i)
     let rev = 11 - (add % 11)
     if (rev === 10 || rev === 11) rev = 0
     if (rev !== parseInt(cpf.charAt(9))) return false
-    // Valida 2o digito
+    // Valida segundo digito
     add = 0
     for (let i = 0; i < 10; i++) add += parseInt(cpf.charAt(i)) * (11 - i)
     let rest = 11 - (add % 11)
@@ -45,7 +45,7 @@ const utils = {
 
     if (cnpj.length !== 14) return false
 
-    // Elimina CNPJs invalidos conhecidos
+    // Elimina os CNPJ inválidos conhecidos
     if (
       cnpj === '00000000000000' ||
         cnpj === '11111111111111' ||
