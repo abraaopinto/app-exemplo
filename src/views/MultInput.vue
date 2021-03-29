@@ -3,7 +3,7 @@
     <PageHeader title="MultInput" />
     <q-card>
       <q-card-section>
-        <inputSearchPessoa
+        <InputSearchPessoa
           type="text"
           bottom-slots
           v-model="texto"
@@ -21,11 +21,11 @@
 </template>
 <script>
 import PageHeader from '../components/PageHeader'
-import inputSearchPessoa from '../components/inputSearchPerson'
+import InputSearchPessoa from '../components/InputSearchPerson'
 export default {
   components: {
     PageHeader,
-    inputSearchPessoa
+    InputSearchPessoa
   },
   data () {
     return {

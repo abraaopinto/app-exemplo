@@ -7,7 +7,7 @@
     v-bind="$attrs"
     v-on="$listeners"
     v-model="content"
-    @input="val => content = $utils.sanitize($utils.capitalize(val))"
+    @input="val => content = this.$utils.sanitize(this.$utils.capitalize(val))"
     :rules="composeRules()"
     :mask="isMask"
     :maxlength="limiteMaximoCampo"
@@ -34,6 +34,7 @@
   </q-input>
 </template>
 <script>
+
 const regexRegraNomeRazaoSocial = /[A-Zi]/i
 const cpfMaskFormat = '###.###.###-###'
 const cnpjMaskFormat = '##.###.###/####-##'
